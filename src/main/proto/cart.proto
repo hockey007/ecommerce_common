@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package com.ecommerce.common;
+
+option java_multiple_files = true;
+option java_package = "com.ecommerce.common";
+option java_outer_classname = "CartProto";
+
+service CartService {
+  rpc getCartItems(GetCartRequest) returns (GetCartResponse);
+}
+
+message GetCartRequest {
+  string userId = 1;
+}
+
+message GetCartResponse {
+  bool error = 1;
+  repeated CartProduct cartItems = 2;
+  bool message = 3;
+}
+
+message CartProduct {
+  string productId = 1;
+  string variantId = 2;
+  int32 quantity = 3;
+}
