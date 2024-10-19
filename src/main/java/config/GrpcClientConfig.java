@@ -4,6 +4,7 @@ import com.ecommerce.common.InventoryServiceGrpc;
 import com.ecommerce.common.CartServiceGrpc;
 import com.ecommerce.common.InventoryServiceGrpc.InventoryServiceBlockingStub;
 import com.ecommerce.common.CartServiceGrpc.CartServiceBlockingStub;
+import com.ecommerce.common.ProductServiceGrpc.ProductServiceBlockingStub;
 import com.ecommerce.common.ProductServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -51,7 +52,7 @@ public class GrpcClientConfig {
     }
 
     @Bean
-    public ProductServiceGrpc.ProductServiceBlockingStub productServiceBlockingStub(
+    public ProductServiceBlockingStub productServiceBlockingStub(
             @Qualifier("productChannel") ManagedChannel channel
     ) {
         return ProductServiceGrpc.newBlockingStub(channel);
